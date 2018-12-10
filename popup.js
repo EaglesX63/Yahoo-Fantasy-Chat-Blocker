@@ -6,20 +6,48 @@ var s = $('input'),
     f  = $('form'),
     a = $('.after'),
 		m = $('h4');
-	u = $('.unblock_section');
 
-u.on('click', function(){
-	var classname = $(this).attr('class');
-	alert(classname);
-});
+function getArrayValue(unblock_name, names) {
+  var amountOfUsers =  names.users.length;
+
+  for (i = 0; i <= amountOfUsers; i++) {
+    var blockedUser = names.users.sort()[i];
+    if(blockedUser === unblock_name){
+      var newList = names.users.splice(i,1);
+      var newList = names.users;
+
+      chrome.storage.sync.set({"users": newList}, function() {
+        chrome.storage.sync.get("users", function (results) {
+          afterChange();
+        })
+      })
+
+    }
+  }
+}
+
+function UnblockName(names) {
+  var unblock = $('.unblock_section');
+
+  unblock.on('click', function(){
+      var unblock_name = $(this).parent().attr('data-name');
+      getArrayValue(unblock_name, names);
+  })
+
+}
 
 function nameList() {
 	chrome.storage.sync.get("users", function (names) {
 		var amountOfUsers =  names.users.length;
 		for (i = 0; i <= amountOfUsers; i++) {
 			var blockedUser = names.users.sort()[i];
-		    $('.block-table').append('<div class="name_row" id='+blockedUser+'><div class="unblock_section">X</div><div class="name_section">'+blockedUser+'</div></div>');
+        if(names.users[i] !== undefined) {
+		    $('.block-table').append('<div class="name_row" data-name="'+blockedUser+'"><div class="unblock_section">X</div><div class="name_section">'+blockedUser+'</div></div>');
+      }
 		}
+
+    UnblockName(names);
+
 	})
 }
 
@@ -74,7 +102,7 @@ f.submit(function(e){
     s.val('');
     f.removeClass('explode');
     m.removeClass('show');
-  }, 3000);
+  }, 1000);
 })
 
 nameList();
