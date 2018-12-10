@@ -1,0 +1,13 @@
+.blocked-message .message-bubble {
+	color: #fff !important;
+	background-color: #fff !important;
+}
+
+.blocked-message .message-bubble:hover {
+	color: #fff !important;
+	background-color: #444444 !important;
+}
+
+.blocked-message .iris-icon-tail {
+	display: none !important;
+}
