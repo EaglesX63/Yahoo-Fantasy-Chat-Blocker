@@ -1,0 +1,21 @@
+  {
+	"name": "Yahoo Fantasy Chat Blocker",
+	"version": "1.0",
+	"description": "Block that annoying sucker in your fantasy chat that you hate.",
+	"permissions": ["storage","*://*.fantasy-messenger.sports.yahoo.com/group/*","declarativeContent"],
+	"content_scripts": [
+		{
+		  "matches": ["*://*.fantasy-messenger.sports.yahoo.com/group/*"],
+		  "js": ["hello.js", "jquery-3.3.1.min.js"],
+		  "css": ["block.css"]
+		}
+	],
+	"background": {
+		"scripts": ["background.js"],
+		"persistent": false
+	},
+	"page_action": {
+		"default_popup": "popup.html"
+	},
+	"manifest_version": 2
+  }
