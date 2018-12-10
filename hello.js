@@ -1,3 +1,10 @@
+function inputName() {
+	chrome.storage.sync.get({"users": []}, function (value) {
+		var oldList = value.users;
+		console.log(oldList)
+	})
+}
+
 function CheckAuthor(MessageNum) {
 	var messageAuthor = document.querySelectorAll('.col2 .user-name')[MessageNum].getAttribute("title").split("(")[0].trim();
 
