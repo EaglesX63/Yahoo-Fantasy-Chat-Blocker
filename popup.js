@@ -7,6 +7,13 @@ var s = $('input'),
     a = $('.after'),
 		m = $('h4');
 
+function sendUnblock(name) {
+  var sendName = name;
+  chrome.tabs.getSelected(null, function(tab) {
+      chrome.tabs.sendMessage(tab.id, {username: sendName}, function(response) { });
+  });
+}
+
 function getArrayValue(unblock_name, names) {
   var amountOfUsers =  names.users.length;
 
@@ -24,6 +31,7 @@ function getArrayValue(unblock_name, names) {
 
     }
   }
+
 }
 
 function UnblockName(names) {
@@ -32,6 +40,7 @@ function UnblockName(names) {
   unblock.on('click', function(){
       var unblock_name = $(this).parent().attr('data-name');
       getArrayValue(unblock_name, names);
+      sendUnblock(unblock_name);
   })
 
 }
