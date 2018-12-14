@@ -7,6 +7,13 @@ var s = $('input'),
     a = $('.after'),
 		m = $('h4');
 
+function unblockClass(object) {
+  var newClass = $(object).parent().children().eq(1).children().eq(0);
+  newClass.addClass("unblock-animation");
+  $(object).css("background-color","#750505");
+  $(object).css("border-bottom", "3px solid #2b0000");
+}
+
 function sendUnblock(name) {
   var sendName = name;
   chrome.tabs.getSelected(null, function(tab) {
@@ -39,8 +46,11 @@ function UnblockName(names) {
 
   unblock.on('click', function(){
       var unblock_name = $(this).parent().attr('data-name');
-      getArrayValue(unblock_name, names);
+      setTimeout(function() {
+        getArrayValue(unblock_name, names);
+      },2000);
       sendUnblock(unblock_name);
+      unblockClass(this);
   })
 
 }
@@ -51,7 +61,7 @@ function nameList() {
 		for (i = 0; i <= amountOfUsers; i++) {
 			var blockedUser = names.users.sort()[i];
         if(names.users[i] !== undefined) {
-		    $('.block-table').append('<div class="name_row" data-name="'+blockedUser+'"><div class="unblock_section">X</div><div class="name_section">'+blockedUser+'</div></div>');
+		    $('.block-table').append('<div class="name_row" data-name="'+blockedUser+'"><div class="unblock_section">X</div><div class="name_section">'+blockedUser+'<div class="overlay"></div></div></div>');
       }
 		}
 
