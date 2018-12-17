@@ -4,7 +4,8 @@ html {
 }
 
 body {
-	width: 400px;
+	width: 310px;
+  margin: 0px;
 }
 p {
   text-align: center;
@@ -45,8 +46,23 @@ form.explode {
   opacity: 0;
 }
 html {
-  padding-top: 100px;
 }
+
+.chat-tab {
+  width:100%;
+  height: 30px;
+  background-color: #E6E6E6;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.chat-tab a {
+  color: black;
+  font-weight: bolder;
+  text-align: center;
+  line-height: 30px;
+}
+
 form {
   width: 36px;
   height: 36px;
