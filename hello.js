@@ -5,7 +5,6 @@ function inputName() {
 }
 
 function removeBlockedClass(MessageNum) {
-	console.log(MessageNum);
 	document.querySelectorAll('.ci-item-content')[MessageNum]
 	var authorMessagesLength = document.querySelectorAll('.ci-item-content')[MessageNum].querySelectorAll('.iris-chat-message').length;
 	for (let i = 0; i <= authorMessagesLength-1; i++) {
@@ -26,10 +25,10 @@ function CheckAuthor(MessageNum,recievedName) {
 	var recievedName = recievedName;
 	inputName();
 
-	if (oldList.includes(messageAuthor)) {
-		addBlockedClass(MessageNum);
-	} else if (messageAuthor === recievedName) {
+	if (messageAuthor === recievedName) {
 		removeBlockedClass(MessageNum);
+	} else if (oldList.includes(messageAuthor)) {
+		addBlockedClass(MessageNum);
 	}
 }
 
