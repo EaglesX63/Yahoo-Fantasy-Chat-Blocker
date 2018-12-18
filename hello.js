@@ -1,3 +1,7 @@
+function openUsersList() {
+	$('.group-settings-icon').trigger('click');
+}
+
 function inputName() {
 	chrome.storage.sync.get({"users": []}, function (value) {
 		oldList = value.users;
