@@ -5,7 +5,15 @@
 var s = $('input'),
     f  = $('form'),
     a = $('.after'),
+    open = $('.left-button'),
 		m = $('h4');
+
+function sendOpen() {
+  var OpenRequest = "yes";
+  chrome.tabs.getSelected(null, function(tab) {
+      chrome.tabs.sendMessage(tab.id, {RequestType: OpenRequest}, function(response) { });
+  });
+}
 
 function unblockClass(object) {
   var newClass = $(object).parent().children().eq(1).children().eq(0);
@@ -108,6 +116,10 @@ a.on('click', function(e){
   setTimeout(function(){
     f.removeClass('close');
   }, 1300);
+})
+
+open.on('click', function(e){
+  sendOpen();
 })
 
 f.submit(function(e){
