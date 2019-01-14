@@ -98,6 +98,21 @@ function inputName() {
 	})
 }
 
+function listBlock() {
+  var functionName = "GetList";
+  chrome.tabs.getSelected(null, function(tab) {
+      chrome.tabs.sendMessage(tab.id, functionName, function(response) { });
+  }); 
+}
+
+$('.right-button').click(function(){
+  listBlock();
+})
+
+$('.button').click(function() {
+  $(this).addClass('active');
+});
+
 s.focus(function(){
   if( f.hasClass('open') ) return;
   f.addClass('in');
