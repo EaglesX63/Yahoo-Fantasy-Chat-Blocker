@@ -2,12 +2,15 @@ function getList() {
 	var outerNameDiv = '#app > div.threecol.ci-groups-layout > div.content > div.col2 > div.content.col2.primary > div > div > div.members > div > div';
 	var innerNameDiv = '#app > div.threecol.ci-groups-layout > div.content > div.col2 > div.content.col2.primary > div > div > div.members > div > div:nth-child(INDEX) > div > div > div.flex-grow.list-item-title';
 	var chatList = [];
-	var listNameLength = document.querySelectorAll(outerNameDiv).length;
 	$('.vtop').click();
-	for (let i = 0; i <= listNameLength-1; i++) {
-		let listNameSelector = outerNameDiv.replace("INDEX", i);
-		console.log(document.querySelectorAll(listNameSelector).textContent;
-	}
+//	for (let i = 0; i <= listNameLength-1; i++) {
+//		let listNameSelector = outerNameDiv.replace("INDEX", i);
+//		console.log(document.querySelectorAll(listNameSelector).textContent;
+//	}
+setTimeout(function(){
+	var listNameLength = document.querySelectorAll(outerNameDiv).length;
+	console.log(listNameLength);
+},2500);
 
 }
 
