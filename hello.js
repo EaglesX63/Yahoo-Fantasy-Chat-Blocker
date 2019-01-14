@@ -1,3 +1,16 @@
+function getList() {
+	var outerNameDiv = '#app > div.threecol.ci-groups-layout > div.content > div.col2 > div.content.col2.primary > div > div > div.members > div > div';
+	var innerNameDiv = '#app > div.threecol.ci-groups-layout > div.content > div.col2 > div.content.col2.primary > div > div > div.members > div > div:nth-child(INDEX) > div > div > div.flex-grow.list-item-title';
+	var chatList = [];
+	var listNameLength = document.querySelectorAll(outerNameDiv).length;
+	$('.vtop').click();
+	for (let i = 0; i <= listNameLength-1; i++) {
+		let listNameSelector = outerNameDiv.replace("INDEX", i);
+		console.log(document.querySelectorAll(listNameSelector).textContent;
+	}
+
+}
+
 function openUsersList() {
 	$('.group-settings-icon').trigger('click');
 }
@@ -52,9 +65,13 @@ setInterval (function() {
 }, 500)
 
 chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
-	var sentFunction = "toRemove";
-	var request = request.username;
-	setTimeout(function(){
-		GetMessages(request);
-	},2000);
+	if (request == "GetList") {
+		getList();
+	} else {
+		var sentFunction = "toRemove";
+		var request = request.username;
+		setTimeout(function(){
+			GetMessages(request);
+		},2000);
+	}
 });
