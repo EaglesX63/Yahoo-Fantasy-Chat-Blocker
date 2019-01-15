@@ -152,3 +152,19 @@ f.submit(function(e){
 })
 
 nameList();
+
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+        if (request.msg === "something_completed") {
+            //  To do something
+            var unblockedList = request.data.list;
+
+            chrome.storage.sync.get("users", function (names) {
+              var blockedList =  names.users;
+              var emptyList = [];
+
+            });
+
+        }
+    }
+);
