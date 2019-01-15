@@ -163,6 +163,11 @@ chrome.runtime.onMessage.addListener(
               var blockedList =  names.users;
               var emptyList = [];
 
+              jQuery.grep(unblockedList, function(el) {
+                      if (jQuery.inArray(el, blockedList) == -1) emptyList.push(el);
+              });
+
+              console.log(emptyList);
             });
 
         }
