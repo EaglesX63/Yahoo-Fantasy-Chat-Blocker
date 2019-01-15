@@ -16,7 +16,7 @@ function getList() {
 
 		for (let i=2; i<=listNameLength; i++) {
 			let listNameSelector = innerNameDiv.replace("INDEX", i);
-			let listName = document.querySelector(listNameSelector).textContent.split('(')[0];
+			let listName = document.querySelector(listNameSelector).textContent.split('(')[0].trim();
 			chatList.push(listName);
 		}
 
