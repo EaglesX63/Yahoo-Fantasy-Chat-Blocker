@@ -7,10 +7,28 @@ function getList() {
 //		let listNameSelector = outerNameDiv.replace("INDEX", i);
 //		console.log(document.querySelectorAll(listNameSelector).textContent;
 //	}
-setTimeout(function(){
-	var listNameLength = document.querySelectorAll(outerNameDiv).length;
-	console.log(listNameLength);
-},2500);
+
+	var checkExist = setInterval(function() {
+	   if ($('div.content.col2.primary').length) {
+	      console.log("Exists!");
+	      clearInterval(checkExist);
+	      var listNameLength = document.querySelectorAll('#app > div.threecol.ci-groups-layout > div.content > div.col2 > div.content.col2.primary > div > div > div.members > div > div').length;
+
+		for (let i=2; i<=listNameLength; i++) {
+			let listNameSelector = innerNameDiv.replace("INDEX", i);
+			let listName = document.querySelector(listNameSelector).textContent.split('(')[0];
+			chatList.push(listName);
+		}
+
+		chrome.runtime.sendMessage({
+		    msg: "something_completed", 
+		    data: {
+		        list: chatList
+		    }
+		});
+
+		}
+	}, 100);
 
 }
 
