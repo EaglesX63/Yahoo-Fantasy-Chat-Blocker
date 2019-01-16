@@ -8,6 +8,28 @@ var s = $('input'),
     open = $('.left-button'),
 		m = $('h4');
 
+function nameList() {
+  chrome.storage.sync.get("users", function (names) {
+    var amountOfUsers =  names.users.length;
+    for (i = 0; i <= amountOfUsers; i++) {
+      var blockedUser = names.users.sort()[i];
+        if(names.users[i] !== undefined) {
+        $('.block-table').append('<div class="name_row" data-name="'+blockedUser+'"><div class="unblock_section">X</div><div class="name_section">'+blockedUser+'<div class="overlay"></div></div></div>');
+      }
+    }
+
+    UnblockName(names);
+
+  })
+}
+
+function listView(emptyList) {
+  $('body').append('<div class="list_section"><div class="list_title">SELECT USER</div><div class="list_list"></div></div>');
+  for (i = 0; i <= emptyList.length-1; i++) {
+    $('.list_list').append('<div>'+emptyList[i]+'</div>');
+  }
+}
+
 function sendOpen() {
   var OpenRequest = "yes";
   chrome.tabs.getSelected(null, function(tab) {
@@ -167,7 +189,8 @@ chrome.runtime.onMessage.addListener(
                       if (jQuery.inArray(el, blockedList) == -1) emptyList.push(el);
               });
 
-              console.log(emptyList);
+              listView(emptyList);
+
             });
 
         }
