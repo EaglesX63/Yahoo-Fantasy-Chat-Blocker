@@ -3,10 +3,6 @@ function getList() {
 	var innerNameDiv = '#app > div.threecol.ci-groups-layout > div.content > div.col2 > div.content.col2.primary > div > div > div.members > div > div:nth-child(INDEX) > div > div > div.flex-grow.list-item-title';
 	var chatList = [];
 	$('.vtop').click();
-//	for (let i = 0; i <= listNameLength-1; i++) {
-//		let listNameSelector = outerNameDiv.replace("INDEX", i);
-//		console.log(document.querySelectorAll(listNameSelector).textContent;
-//	}
 
 	var checkExist = setInterval(function() {
 	   if ($('div.content.col2.primary').length) {
@@ -26,6 +22,8 @@ function getList() {
 		        list: chatList
 		    }
 		});
+
+		$('.vtop').click();
 
 		}
 	}, 100);
