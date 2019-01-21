@@ -8,23 +8,16 @@ var s = $('input'),
     open = $('.left-button'),
 		m = $('h4');
 
-function nameList() {
-  chrome.storage.sync.get("users", function (names) {
-    var amountOfUsers =  names.users.length;
-    for (i = 0; i <= amountOfUsers; i++) {
-      var blockedUser = names.users.sort()[i];
-        if(names.users[i] !== undefined) {
-        $('.block-table').append('<div class="name_row" data-name="'+blockedUser+'"><div class="unblock_section">X</div><div class="name_section">'+blockedUser+'<div class="overlay"></div></div></div>');
-      }
-    }
-
-    UnblockName(names);
-
-  })
+function removeList() {
+  var element = document.getElementByClassName("right-button");
+  element.classList.remove("active");
+  $('.right-button').attr("active", "");
+  $('.list_section').remove();
 }
 
 function listView(emptyList) {
-  $('body').append('<div class="list_section"><div class="list_title">SELECT USER</div><div class="list_list"></div></div>');
+  console.log(emptyList);
+  $('.button-section').after('<div class="list_section"><div class="list_title">SELECT USER</div><div class="list_list"></div></div>');
   for (i = 0; i <= emptyList.length-1; i++) {
     $('.list_list').append('<div>'+emptyList[i]+'</div>');
   }
@@ -128,7 +121,12 @@ function listBlock() {
 }
 
 $('.right-button').click(function(){
-  listBlock();
+  var isActive = document.querySelector('.right-button').classList[2];
+  if (isActive == 'active') {
+    removeList();
+  } else {
+    listBlock();
+  }
 })
 
 $('.button').click(function() {
