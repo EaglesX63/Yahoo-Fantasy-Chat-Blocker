@@ -126,6 +126,15 @@ html {
   margin-right: 2px;
 }
 
+.list_list {
+  -moz-column-count: 3;
+  -moz-column-gap: 20px;
+  -webkit-column-count: 3;
+  -webkit-column-gap: 20px;
+  column-count: 3;
+  column-gap: 20px;
+}
+
 form {
   width: 36px;
   height: 36px;
