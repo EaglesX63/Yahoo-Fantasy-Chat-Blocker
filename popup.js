@@ -9,15 +9,13 @@ var s = $('input'),
 		m = $('h4');
 
 function removeList() {
-  var element = document.getElementByClassName("right-button");
-  element.classList.remove("active");
-  $('.right-button').attr("active", "");
+  $('.right-button').removeClass("active");
   $('.list_section').remove();
 }
 
 function listView(emptyList) {
   console.log(emptyList);
-  $('.button-section').after('<div class="list_section"><div class="list_title">SELECT USER</div><div class="list_list"></div></div>');
+  $('.button-section').after('<div class="list_section"><div class="list_list"></div></div>');
   for (i = 0; i <= emptyList.length-1; i++) {
     $('.list_list').append('<div>'+emptyList[i]+'</div>');
   }
@@ -125,13 +123,10 @@ $('.right-button').click(function(){
   if (isActive == 'active') {
     removeList();
   } else {
+    $('.right-button').addClass('active');
     listBlock();
   }
 })
-
-$('.button').click(function() {
-  $(this).addClass('active');
-});
 
 s.focus(function(){
   if( f.hasClass('open') ) return;
