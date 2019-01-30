@@ -127,12 +127,30 @@ html {
 }
 
 .list_list {
-  -moz-column-count: 3;
+  -moz-column-count: 2;
   -moz-column-gap: 20px;
-  -webkit-column-count: 3;
+  -webkit-column-count: 2;
   -webkit-column-gap: 20px;
-  column-count: 3;
+  column-count: 2;
   column-gap: 20px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+.list_list div {
+  display: block;
+  text-align: center;
+}
+
+.list_list div span {
+  display: inline-block;
+  width: 100px;
+  height: 20px;
+  background-color: #ffffff;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  border-left: 4px solid #9a0606;
+  border-right: 4px solid #9a0606;
 }
 
 form {
