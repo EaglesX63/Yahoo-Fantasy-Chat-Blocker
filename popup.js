@@ -17,7 +17,15 @@ function listView(emptyList) {
   console.log(emptyList);
   $('.button-section').after('<div class="list_section"><div class="list_list"></div></div>');
   for (i = 0; i <= emptyList.length-1; i++) {
-    $('.list_list').append('<div>'+emptyList[i]+'</div>');
+    var newName = emptyList[i];
+    console.log(newName);
+    var newNameSplit = newName.split(" ");
+    var firstName = newNameSplit[0].trim();
+    if (newNameSplit[1] !== undefined) {
+      var lastName = newNameSplit[1].trim();
+    }
+    var lastInitial = lastName.charAt(0);
+    $('.list_list').append('<div><span data-list-name="'+emptyList[i]+'">'+firstName+' '+lastInitial+'</span></div>');
   }
 }
 
