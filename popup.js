@@ -27,6 +27,13 @@ function listView(emptyList) {
     var lastInitial = lastName.charAt(0);
     $('.list_list').append('<div><span data-list-name="'+emptyList[i]+'">'+firstName+' '+lastInitial+'</span></div>');
   }
+  var list_block_div = $('body > div.list_section > div > div');
+
+  list_block_div.on('click', function(){
+      var list_block_name = $(this).children().attr('data-list-name');
+      inputName(list_block_name);
+      removeList();
+  })
 }
 
 function sendOpen() {
@@ -34,6 +41,10 @@ function sendOpen() {
   chrome.tabs.getSelected(null, function(tab) {
       chrome.tabs.sendMessage(tab.id, {RequestType: OpenRequest}, function(response) { });
   });
+}
+
+function unblockChange(data) {
+  var something = $('.name_row[data-name="'+data+'"]').remove();
 }
 
 function unblockClass(object) {
@@ -50,7 +61,7 @@ function sendUnblock(name) {
   });
 }
 
-function getArrayValue(unblock_name, names) {
+function getArrayValue(unblock_name, names, functionType) {
   var amountOfUsers =  names.users.length;
 
   for (i = 0; i <= amountOfUsers; i++) {
@@ -61,7 +72,11 @@ function getArrayValue(unblock_name, names) {
 
       chrome.storage.sync.set({"users": newList}, function() {
         chrome.storage.sync.get("users", function (results) {
-          afterChange();
+          if (functionType !== undefined) {
+            console.log("unblocked a dude");
+          } else {
+            afterChange();
+          }
         })
       })
 
@@ -75,8 +90,10 @@ function UnblockName(names) {
 
   unblock.on('click', function(){
       var unblock_name = $(this).parent().attr('data-name');
+      var functionType = "nameUnblock";
       setTimeout(function() {
-        getArrayValue(unblock_name, names);
+        unblockChange(unblock_name);
+        getArrayValue(unblock_name, names, functionType);
       },2000);
       sendUnblock(unblock_name);
       unblockClass(this);
@@ -104,10 +121,15 @@ async function afterChange() {
 	await nameList();
 }
 
-function inputName() {
+function inputName(name_to_block) {
 	chrome.storage.sync.get({"users": []}, function (value) {
+
 		var oldList = value.users;
-		var newUser = document.querySelector('#name_input').value;
+    if (name_to_block !== undefined) {
+      var newUser = name_to_block;
+    } else {
+      var newUser = document.querySelector('#name_input').value;
+    }
 
 		oldList.push(newUser);
 
@@ -119,12 +141,29 @@ function inputName() {
 	})
 }
 
+function selectBlock() {
+  var functionName = "SelectBlock";
+  chrome.tabs.getSelected(null, function(tab) {
+      chrome.tabs.sendMessage(tab.id, functionName, function(response) { });
+  });   
+}
+
 function listBlock() {
   var functionName = "GetList";
   chrome.tabs.getSelected(null, function(tab) {
       chrome.tabs.sendMessage(tab.id, functionName, function(response) { });
   }); 
 }
+
+$('.left-button').click(function(){
+  var isActive = document.querySelector('.left-button').classList[2];
+  if (isActive == 'active') {
+
+  } else {
+    $('.left-button').addClass('active');
+    selectBlock();
+  }
+});
 
 $('.right-button').click(function(){
   var isActive = document.querySelector('.right-button').classList[2];
@@ -134,7 +173,7 @@ $('.right-button').click(function(){
     $('.right-button').addClass('active');
     listBlock();
   }
-})
+});
 
 s.focus(function(){
   if( f.hasClass('open') ) return;
