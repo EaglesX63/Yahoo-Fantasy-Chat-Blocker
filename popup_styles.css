@@ -126,7 +126,13 @@ html {
   margin-right: 2px;
 }
 
+.list_section {
+  display: block;
+  text-align: center;
+}
+
 .list_list {
+  display: inline-block;
   -moz-column-count: 2;
   -moz-column-gap: 20px;
   -webkit-column-count: 2;
@@ -143,14 +149,21 @@ html {
 }
 
 .list_list div span {
-  display: inline-block;
-  width: 100px;
-  height: 20px;
-  background-color: #ffffff;
-  margin-bottom: 5px;
-  border-radius: 5px;
-  border-left: 4px solid #9a0606;
-  border-right: 4px solid #9a0606;
+    display: inline-block;
+    width: 100px;
+    height: 20px;
+    background-color: #ffffff;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    border-left: 4px solid #9a0606;
+    border-right: 4px solid #9a0606;
+    border-bottom: 6px solid #a5a5a5;
+}
+
+.list_list div span:hover {
+  background-color: #cccccc;
+  color: #9a0606;
+  border-bottom-color: #848484;
 }
 
 form {
