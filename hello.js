@@ -1,3 +1,8 @@
+function selectHighlight() {
+	$('div.flex-column.ci-group-content.h100p.relative').append('<div id="selectOverlay"></div>');
+	$('#selectOverlay').addClass("selectOverlay");
+}
+
 function getList() {
 	var outerNameDiv = '#app > div.threecol.ci-groups-layout > div.content > div.col2 > div.content.col2.primary > div > div > div.members > div > div';
 	var innerNameDiv = '#app > div.threecol.ci-groups-layout > div.content > div.col2 > div.content.col2.primary > div > div > div.members > div > div:nth-child(INDEX) > div > div > div.flex-grow.list-item-title';
@@ -10,7 +15,7 @@ function getList() {
 	      clearInterval(checkExist);
 	      var listNameLength = document.querySelectorAll('#app > div.threecol.ci-groups-layout > div.content > div.col2 > div.content.col2.primary > div > div > div.members > div > div').length;
 
-		for (let i=2; i<=listNameLength; i++) {
+		for (let i=3; i<=listNameLength; i++) {
 			let listNameSelector = innerNameDiv.replace("INDEX", i);
 			let listName = document.querySelector(listNameSelector).textContent.split('(')[0].trim();
 			chatList.push(listName);
@@ -86,7 +91,9 @@ setInterval (function() {
 chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
 	if (request == "GetList") {
 		getList();
-	} else {
+	} 	else if (request == "SelectBlock") {
+		selectHighlight();
+	}	else {
 		var sentFunction = "toRemove";
 		var request = request.username;
 		setTimeout(function(){
