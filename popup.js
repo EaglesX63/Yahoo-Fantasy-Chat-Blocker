@@ -158,7 +158,7 @@ function listBlock() {
 $('.left-button').click(function(){
   var isActive = document.querySelector('.left-button').classList[2];
   if (isActive == 'active') {
-
+    removeSelect();
   } else {
     $('.left-button').addClass('active');
     selectBlock();
