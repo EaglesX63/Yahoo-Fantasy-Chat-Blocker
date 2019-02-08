@@ -1,6 +1,5 @@
 function selectHighlight() {
 	$('div.flex-column.ci-group-content.h100p.relative').append('<div id="selectOverlay"></div>');
-	$('#selectOverlay').addClass("selectOverlay");
 }
 
 function getList() {
