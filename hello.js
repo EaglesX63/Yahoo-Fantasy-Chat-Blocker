@@ -1,3 +1,10 @@
+function removeSelect() {
+	var selectOverlay = document.getElementById('selectOverlay');
+	console.log(selectOverlay);
+	console.log(selectOverlay.parentElement);
+	selectOverlay.parentElement.removeChild(selectOverlay);
+}
+
 function selectHighlight() {
 	$('.ci-group-feed-sections').append('<div id="selectOverlay"></div>');
 }
@@ -92,6 +99,8 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
 		getList();
 	} 	else if (request == "SelectBlock") {
 		selectHighlight();
+	}	else if (request == "RemoveSelect") {
+		removeSelect();
 	}	else {
 		var sentFunction = "toRemove";
 		var request = request.username;
