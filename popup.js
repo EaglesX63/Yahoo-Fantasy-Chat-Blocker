@@ -13,6 +13,15 @@ function removeList() {
   $('.list_section').remove();
 }
 
+function removeSelect() {
+  $('.left-button').removeClass("active");
+
+  var functionName = "RemoveSelect";
+  chrome.tabs.getSelected(null, function(tab) {
+      chrome.tabs.sendMessage(tab.id, functionName, function(response) { });
+  });   
+}
+
 function listView(emptyList) {
   console.log(emptyList);
   $('.button-section').after('<div class="list_section"><div class="list_list"></div></div>');
