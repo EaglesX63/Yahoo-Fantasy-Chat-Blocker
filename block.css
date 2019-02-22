@@ -24,4 +24,13 @@
 
 .unblocked-index {
   z-index: 4 !important;
+  background-color: #f1f1f5 !important;
+  width: 40% !important;
+  padding-top: 3px !important;
+  padding-bottom: 9px !important;
+  padding-left: 11px !important;
+  padding-right: 0px !important;
+  margin-top: 6px !important;
+  margin-left: 5px !important;
+  border-radius: 15px !important;
 }
