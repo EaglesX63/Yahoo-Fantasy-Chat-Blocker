@@ -52,7 +52,7 @@ function inputName() {
 function addUnblockedIndex(MessageNum) {
 	document.querySelectorAll('.ci-item-content')[MessageNum]
 	var authorMessagesIndex = document.querySelectorAll('.ci-item-content')[MessageNum].parentElement.parentElement.parentElement;
-	authorMessagesIndex.classList.add('unlocked-index');
+	authorMessagesIndex.classList.add('unblocked-index');
 }
 
 function removeBlockedClass(MessageNum) {
