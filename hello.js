@@ -1,7 +1,5 @@
 function removeSelect() {
 	var selectOverlay = document.getElementById('selectOverlay');
-	console.log(selectOverlay);
-	console.log(selectOverlay.parentElement);
 	selectOverlay.parentElement.removeChild(selectOverlay);
 }
 
@@ -51,6 +49,12 @@ function inputName() {
 	})
 }
 
+function addUnblockedIndex(MessageNum) {
+	document.querySelectorAll('.ci-item-content')[MessageNum]
+	var authorMessagesIndex = document.querySelectorAll('.ci-item-content')[MessageNum].parentElement.parentElement.parentElement;
+	authorMessagesIndex.classList.add('unlocked-index');
+}
+
 function removeBlockedClass(MessageNum) {
 	document.querySelectorAll('.ci-item-content')[MessageNum]
 	var authorMessagesLength = document.querySelectorAll('.ci-item-content')[MessageNum].querySelectorAll('.iris-chat-message').length;
@@ -76,6 +80,8 @@ function CheckAuthor(MessageNum,recievedName) {
 		removeBlockedClass(MessageNum);
 	} else if (oldList.includes(messageAuthor)) {
 		addBlockedClass(MessageNum);
+	} else {
+		addUnblockedIndex(MessageNum);
 	}
 }
 
