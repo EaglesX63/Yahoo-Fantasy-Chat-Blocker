@@ -1,7 +1,12 @@
 function selectClick() {
-	$(".ci-group-feed-sections").click(function() {
-	   var myClass = this.className;
-	   alert(myClass);
+	$(".unblocked-index").click(function() {
+		var selectAuthor = $(this).find('.user-name').first().attr('title').split('(')[0].trim();
+		chrome.runtime.sendMessage({
+		    msg: "click_author", 
+		    data: {
+		        clickAuthor: selectAuthor
+		    }
+		});
 	});
 }
 
