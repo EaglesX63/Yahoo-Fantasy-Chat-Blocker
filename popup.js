@@ -242,6 +242,8 @@ chrome.runtime.onMessage.addListener(
 
             });
 
+        } else if (request.msg === "click_author") {
+          inputName(request.data.clickAuthor);
         }
     }
 );
