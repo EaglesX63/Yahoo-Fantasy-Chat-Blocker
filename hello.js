@@ -1,10 +1,20 @@
+function selectClick() {
+	$(".ci-group-feed-sections").click(function() {
+	   var myClass = this.className;
+	   alert(myClass);
+	});
+}
+
 function removeSelect() {
 	var selectOverlay = document.getElementById('selectOverlay');
 	selectOverlay.parentElement.removeChild(selectOverlay);
+	$('.ci-group-feed-sections').removeClass('active-overlay');
 }
 
 function selectHighlight() {
+	$('.ci-group-feed-sections').addClass('active-overlay');
 	$('.ci-group-feed-sections').append('<div id="selectOverlay"></div>');
+	selectClick();
 }
 
 function getList() {
