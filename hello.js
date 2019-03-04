@@ -109,6 +109,19 @@ function GetMessages(recievedName) {
 	}
 }
 
+function blockDiv() {
+	$('.content.col1').append('<div class="block-dropdown"><div class="block-left"></div><span>SUPER BLOCK</span><div class="block-right"></div>');
+}
+
+var checkExist = setInterval(function() {
+   if ($('.ci-section').length) {
+      console.log("Exists!");
+      blockDiv();
+      clearInterval(checkExist);
+   }
+}, 100); // check every 100ms
+
+
 sendFunction = "toAdd";
 
 setInterval (function() {
