@@ -55,22 +55,43 @@
 }
 
 .block-dropdown span {
+  position: relative;
+  width: 50px;
+}
+
+.block-dropdown span span {
   display: inline-block;
   width: 50px;
   height: 50px;
   background-color: #333333;
 }
 
-.block-dropdown span:before {
+.block-dropdown span span::before {
   border-color: transparent transparent #333333;
   content: '';
   position: absolute;
+  display: block;
   left: 0;
   top: 0;
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 0 0 50px 50px;
-  border-color: transparent transparent black;
+  border-width: 50px 0 0 50px;
+  border-color: #333333 transparent transparent transparent;
+  transform: translateX(-100%);
+}
+
+.block-dropdown span span::after {
+  border-color: transparent transparent #333333;
+  content: '';
+  position: absolute;
+  display: block;
+  right: -50px;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 50px 50px 0 0;
+  border-color: #333333 transparent transparent transparent;
   transform: translateX(-100%);
 }
