@@ -110,7 +110,7 @@ function GetMessages(recievedName) {
 }
 
 function blockDiv() {
-	$('.content.col1').append('<div class="block-dropdown"><div class="block-left"></div><span>SUPER BLOCK</span><div class="block-right"></div>');
+	$('.content.col1').append('<div class="block-dropdown"><div class="block-left"></div><span><span>SUPER BLOCK</span></span><div class="block-right"></div>');
 }
 
 var checkExist = setInterval(function() {
