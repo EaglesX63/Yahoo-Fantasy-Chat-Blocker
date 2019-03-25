@@ -109,14 +109,17 @@ function GetMessages(recievedName) {
 	}
 }
 
-function blockDiv() {
+function superBlockButton() {
 	$('.content.col1').append('<div class="block-dropdown"><div class="block-left"></div><span><span>SUPER BLOCK</span></span><div class="block-right"></div>');
+	$('.block-dropdown').click(function(){
+		$('.block-dropdown').append('<div class="dropdown-info"></div>');
+	});
 }
 
 var checkExist = setInterval(function() {
    if ($('.ci-section').length) {
       console.log("Exists!");
-      blockDiv();
+      superBlockButton();
       clearInterval(checkExist);
    }
 }, 100); // check every 100ms
