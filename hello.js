@@ -110,9 +110,9 @@ function GetMessages(recievedName) {
 }
 
 function superBlockButton() {
-	$('.content.col1').append('<div class="block-dropdown"><div class="block-left"></div><span><span>SUPER BLOCK</span></span><div class="block-right"></div>');
+	$('.content.col1').append('<div class="block-dropdown"><span><span>SUPER BLOCK</span></span>');
 	$('.block-dropdown').click(function(){
-		$('.block-dropdown').append('<div class="dropdown-info"></div>');
+		$('<div class="dropdown-info">WE CHEESIN</div>').insertBefore('.block-dropdown > span > span');
 	});
 }
 
