@@ -108,7 +108,9 @@
 }
 
 .dropdown-info {
+  position: relative;
   width: 310px;
   height: 200px;
-  margin: 0px;
+  margin: auto;
+  background-color: red;
 }
